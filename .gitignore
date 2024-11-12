@@ -1,0 +1,31 @@
+# General
+node_modules/
+*.log
+.DS_Store
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+instance/
+.venv/
+myprojectenv/
+
+# Flask specific
+*.sqlite3
+*.db
+migrations/
+*.pyo
+*.pyd
+
+# React specific
+node_modules/
+build/
+.cache/
+
+# OS / Editor specific
+.idea/
+.vscode/
+*.swp
+*~

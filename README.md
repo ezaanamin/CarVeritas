@@ -81,7 +81,7 @@ To set up the project on your local machine, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/CarVeritas.git
+   git clone https://github.com/ezaanamin/CarVeritas.git
    cd CarVeritas
    ```
 
