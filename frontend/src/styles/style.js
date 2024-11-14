@@ -91,3 +91,37 @@ margin-top: -10px;
 margin-bottom: 1rem;
 margin-left: 40px;
 `;
+export const FuelTypeDiv = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 15px;
+  font-size: 1rem;
+  text-align: left;
+`;
+
+export const FuelLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 5px 0;
+
+  input {
+    accent-color: #B0BEC5; /* Style radio button color */
+  }
+
+  &:hover {
+    color: #CFD8DC;
+  }
+`;
+
+export const FuelTypeErrorText = styled(ErrorText)`
+  margin-left: 40px;
+  margin-top: -10px;
+  color: #FF4C4C;
+`;

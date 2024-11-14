@@ -1,6 +1,7 @@
 import React from 'react';
 import MainCar from "../../image/main_car.jpg";
 import Input from '../../compoents/Input';
+
 import { MainContainer,MainImg,TextOverlay,Heading,Subheading,Button } from '../../styles/style';
 function MainPage() {
 

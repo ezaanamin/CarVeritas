@@ -1,27 +1,41 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// export const SignUpPost = createAsyncThunk(
-//     'post/postRequest',
-//     async (data, { rejectWithValue }) => {
-//       try {
-//         const response = await axios.post('http://localhost:4000/users/', data);
+export const PostCarData = createAsyncThunk(
+    'post/postRequest',
+    async (data, { rejectWithValue }) => {
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/', data);
   
-//         if (response.data.error === 'User Exist') {
-//           return rejectWithValue({ error: 'User Exist' });
-//         }
+        // if (response.data.error === 'User Exist') {
+        //   return rejectWithValue({ error: 'User Exist' });
+        // }
   
-//         return response.data;
-//       } catch (error) {
-//         return rejectWithValue(error.response.data);
-//       }
-//     }
-//   );
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response.data);
+      }
+    }
+  );
 export const APISlice = createSlice({
     name: 'API',
     initialState: { data: [], error: null, status: 'idle',verfiedStatus:null},
     reducers: {},
     extraReducers: (builder) => {
+
+        builder
+        .addCase(PostCarData.pending, (state) => {
+          state.status = 'loading';
+        })
+        .addCase(PostCarData.fulfilled, (state, action) => {
+          state.status = 'succeeded';
+          state.data = action.payload;
+          state.error = null;
+        })
+        .addCase(PostCarData.rejected, (state, action) => {
+          state.status = 'failed';
+          state.error = action.payload;
+        });
 
     }
 })
