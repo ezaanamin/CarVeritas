@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Button, InputDiv, InputField, ErrorText,FuelTypeDiv,FuelLabel,FuelTypeErrorText} from '../styles/style';
 import { useDispatch } from 'react-redux';
 import { PostCarData } from '../redux/slice/API';
+import { Alert } from '@mui/material';
 
 function Input() {
     const digitsOnly = (value) => /^\d+$/.test(value);
     const dispatch = useDispatch();  // Fixed typo: changed disptach to dispatch
+    const [PValueState,SetPValueState]=useState(false);
+    const [PValue,SetPValue]=useState(0);
+
 
     return (
         <>
+  
+
             <Formik
                 initialValues={{ 
                     company: "", 
@@ -25,6 +31,8 @@ function Input() {
                     promise.then((action) => {
                         if (PostCarData.fulfilled.match(action)) {
                             console.log(action.payload, 'ezaan');
+                            SetPValueState(true);
+                            SetPValue(action.payload.prediction)
                         } else if (PostCarData.rejected.match(action)) {
                             alert("Error");
                         }
@@ -125,6 +133,12 @@ function Input() {
                     );
                 }}
             </Formik>
+            {PValueState && (
+        <Alert variant="filled" severity="success">
+          Predicted Value: {PValue}
+        </Alert>
+      )}
+
         </>
     );
 }
